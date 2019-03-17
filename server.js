@@ -8,9 +8,7 @@ const compression = require('compression')
 
 const helmet = require('helmet')
 
-const uuidv4 = require('uuid/v4')
-
-const ua = require('universal-analytics')
+const counter = require('yametrika').counter({id: process.env.YAMETRIKA});
 
 const PORT = process.env.PORT || 5000
 
@@ -26,8 +24,8 @@ app.use(helmet())
 app.use(compression())
 
 app.get('*', (req, res, next) => {
-  const visitor = ua(process.env.ANALYTICS_CODE, uuidv4())
-  visitor.pageview('/damagecalculator').send()
+  counter.req(req)
+  counter.hit('/')
 
   res.sendFile(path.join(global.__basedir, 'public/index.html'))
 })
