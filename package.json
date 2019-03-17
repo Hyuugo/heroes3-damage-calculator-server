@@ -24,7 +24,8 @@
     "helmet": "^3.16.0",
     "path": "^0.12.7",
     "universal-analytics": "^0.4.20",
-    "uuid": "^3.3.2"
+    "uuid": "^3.3.2",
+    "yametrika": "^2.0.1"
   },
   "devDependencies": {
     "eslint": "^5.15.1"
