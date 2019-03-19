@@ -8,7 +8,11 @@ const compression = require('compression')
 
 const helmet = require('helmet')
 
-const counter = require('yametrika').counter({id: process.env.YAMETRIKA});
+const morgan = require('morgan')
+
+const counter = require('yametrika').counter({id: process.env.YAMETRIKA})
+
+const robots = require('express-robots-txt')
 
 const PORT = process.env.PORT || 5000
 
@@ -22,6 +26,16 @@ app.use(express.static(path.join(global.__basedir, 'public')))
 
 app.use(helmet())
 app.use(compression())
+if (process.env.NODE_ENV !== 'production') {
+  app.use(morgan('dev'))
+} else {
+  app.use(morgan('tiny'))
+}
+
+app.use(robots({
+  UserAgent: '*', 
+  Allow: '*'
+}))
 
 app.get('*', (req, res, next) => {
   counter.req(req)
