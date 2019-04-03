@@ -1,7 +1,7 @@
 {
   "name": "heroes3-tools",
-  "version": "0.9.0",
-  "description": "Web version of damage calculator for Heroes of might and magic III: Horn of The Abyss (https://github.com/Nodl/H3Calc/tree/hota/H3Calc)",
+  "version": "0.10.0",
+  "description": "Web version of damage calculator for Heroes of Might and Magic III: Horn of The Abyss",
   "private": true,
   "main": "server.js",
   "scripts": {
