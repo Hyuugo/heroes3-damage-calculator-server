@@ -22,7 +22,13 @@ global.__basedir = path.dirname(__filename)
 
 app.enable('trust proxy')
 
-app.use(express.static(path.join(global.__basedir, 'public')))
+app.use('public', express.static(path.join(global.__basedir, 'public')))
+
+app.use('/css', express.static(path.join(global.__basedir, 'public', 'css')))
+
+app.use('/js', express.static(path.join(global.__basedir, 'public', 'js')))
+
+app.use('/fonts', express.static(path.join(global.__basedir, 'public', 'fonts')))
 
 app.use(helmet())
 app.use(compression())
@@ -37,11 +43,15 @@ app.use(robots({
   Allow: '*'
 }))
 
-app.get('*', (req, res, next) => {
+app.get('/', (req, res, next) => {
   counter.req(req)
   counter.hit('/')
 
-  res.sendFile(path.join(global.__basedir, 'public/index.html'))
+  res.sendFile(path.join(global.__basedir, 'public', 'index.html'))
+})
+
+app.get('*', (req, res, next) => {
+  res.redirect('/')
 })
 
 app.set('port', PORT)
