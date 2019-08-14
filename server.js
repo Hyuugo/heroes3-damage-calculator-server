@@ -12,8 +12,6 @@ const morgan = require('morgan')
 
 const counter = require('yametrika').counter({id: process.env.YAMETRIKA})
 
-const robots = require('express-robots-txt')
-
 const favicon = require('serve-favicon')
 
 const PORT = process.env.PORT || 5000
@@ -44,10 +42,9 @@ if (process.env.NODE_ENV !== 'production') {
   app.use(morgan('tiny'))
 }
 
-app.use(robots({
-  UserAgent: '*', 
-  Allow: '*'
-}))
+app.get('/robots.txt', (req, res) => {
+  res.sendFile(path.join(global.__basedir, 'public', 'robots.txt'))
+})
 
 app.get('/', (req, res, next) => {
   counter.req(req)
