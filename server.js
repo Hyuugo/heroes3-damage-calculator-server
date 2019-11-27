@@ -30,7 +30,7 @@ app.use('/js', express.static(path.join(global.__basedir, 'public', 'js'), { max
 
 app.use('/fonts', express.static(path.join(global.__basedir, 'public', 'fonts'), { maxage: 604800 }))
 
-app.use('/images', express.static(path.join(global.__basedir, 'public', 'images')))
+app.use('/images', express.static(path.join(global.__basedir, 'public', 'images'), { maxage: 604800 }))
 
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 

@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.b629d501f66ea91182b498386e404a7c.js"
+  "/precache-manifest.a2124f7ddb8b71abe567308cd630057e.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "heroes3tools"});
