@@ -47,14 +47,14 @@ app.get('/robots.txt', (req, res) => {
 })
 
 app.get('/', (req, res, next) => {
-  counter.req(req)
-  counter.hit('/')
+  // counter.req(req)
+  // counter.hit('/')
 
   res.sendFile(path.join(global.__basedir, 'public', 'index.html'))
 })
 
 app.get('*', (req, res, next) => {
-  res.redirect('/')
+  res.sendFile(path.join(global.__basedir, 'public', 'index.html'))
 })
 
 app.set('port', PORT)
