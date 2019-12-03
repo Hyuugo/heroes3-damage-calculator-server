@@ -24,11 +24,11 @@ app.enable('trust proxy')
 
 app.use('public', express.static(path.join(global.__basedir, 'public')))
 
-app.use('/css', express.static(path.join(global.__basedir, 'public', 'css'), { maxage: 604800 }))
+app.use('/css', express.static(path.join(global.__basedir, 'public', 'css'), { maxage: 604800000 }))
 
-app.use('/js', express.static(path.join(global.__basedir, 'public', 'js'), { maxage: 604800 }))
+app.use('/js', express.static(path.join(global.__basedir, 'public', 'js'), { maxage: 604800000 }))
 
-app.use('/fonts', express.static(path.join(global.__basedir, 'public', 'fonts'), { maxage: 604800 }))
+app.use('/fonts', express.static(path.join(global.__basedir, 'public', 'fonts'), { maxage: 604800000 }))
 
 app.use('/images', express.static(path.join(global.__basedir, 'public', 'images')))
 
